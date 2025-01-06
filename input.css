@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&display=swap');
+
+/* This is the tailwind stuff (required) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* End of the tailwind required stuff */
+
+/* Any custom stuff you want to add goes here, after the tailwind stuff (optional) */
+@layer base {
+    body {
+        font-family: "Codystar", serif;
+        text-align: center;
+        margin-top: 50px;
+
+        background: black;
+        color: white;
+        overflow: hidden;
+    }
+    h3 {
+        @apply mb-8 text-4xl font-bold text-gray-400 md:text-5xl;
+    }
+    h5 {
+        @apply mb-2 text-2xl font-bold text-gray-500;
+    }
+}
+           
+.timer {
+    font-size: 24px;
+    margin: 20px 0;
+}
+.message {
+    font-size: 32px;
+    color: #ff5722;
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

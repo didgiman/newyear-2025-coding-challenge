@@ -1,48 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nieuwjaarscode-challenge</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    .timer { font-size: 24px; margin: 20px 0; }
-    .message { font-size: 32px; color: #ff5722; animation: blink 1s infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-  </style>
-</head>
-<body>
-  <h1>Happy New Year!</h1>
-  <div class="timer">Tijd sinds Nieuwjaar: <span id="time"></span></div>
-  <div class="message" id="message"></div>
- 
-  <script>
-    // Coding challenge: Create a countdown timer to New Year's Day 2025
-    // Extend this template with:
-    // - Styling
-    // - Interactivity (! be creative !)
-    // - Librabries
-    // - Responsiveness (tailwind/bootstrap)
-    // Deadline: 13:30
-    // Good luck! and have fun! AND HAPPY NEW YEAR! AND deploy it to Netlify
-    // share in algemeen on teams
- 
-    function updateTimer() {
-      const newYear = new Date('2025-01-01T00:00:00');
-      const now = new Date();
-      const diff = now - newYear;
- 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
- 
-      document.getElementById('time').textContent =
-        `${days} dagen, ${hours} uren, ${minutes} minuten, ${seconds} seconden`;
-    }
- 
-    setInterval(updateTimer, 1000);
-    updateTimer();
-  </script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Nieuwjaarscode-challenge</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container mx-auto flex flex-col items-center justify-center h-screen">
+            <div class="absolute">
+                <h1 class="text-5xl font-extrabold">Happy New Year!</h1>
+                <div class="timer">Tijd <u class="distance cursor-pointer">sinds</u> Nieuwjaar: <span id="time"></span></div>
+                <div class="message" id="message"></div>
+            </div>
+            <div class="fireworks h-screen w-screen"></div>
+        </div>
+
+
+        <script>
+            // Coding challenge: Create a countdown timer to New Year's Day 2025
+            // Extend this template with:
+            // - Styling
+            // - Interactivity (! be creative !)
+            // - Librabries
+            // - Responsiveness (tailwind/bootstrap)
+            // Deadline: 13:30
+            // Good luck! and have fun! AND HAPPY NEW YEAR! AND deploy it to Netlify
+            // share in algemeen on teams
+
+            let newYear = new Date("2025-01-01T00:00:00");
+
+            function updateTimer() {
+                const now = new Date();
+                const diff = now - newYear;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById(
+                    "time"
+                ).textContent = `${days} dagen, ${hours} uren, ${minutes} minuten, ${seconds} seconden`;
+            }
+
+            setInterval(updateTimer, 1000);
+            updateTimer();
+
+            let nyIsFuture = false;
+
+            document.querySelector(".distance").addEventListener("click", () => {
+
+                if (nyIsFuture) {
+                    document.getElementById("message").textContent = "Happy New Year!!!!!!!";
+                    newYear = new Date("2025-01-01T00:00:00");
+                    document.querySelector(".distance").textContent = "sinds";
+                    nyIsFuture = false;
+                } else {
+                    document.getElementById("message").textContent = "Today is the first day of the rest of your life!";
+                    newYear = new Date("2026-01-01T00:00:00");
+                    document.querySelector(".distance").textContent = "tot";
+                    nyIsFuture = true;
+                }
+
+                updateTimer();
+            });
+        </script>
+
+        <!-- jsDelivr  -->
+        <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+        <!-- UNPKG -->
+        <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
+        <!-- Usage -->
+        <script>
+            const container = document.querySelector(".fireworks");
+            const fireworks = new Fireworks.default(container, {
+                /* options */
+            });
+            fireworks.start();
+        </script>
+    </body>
 </html>
