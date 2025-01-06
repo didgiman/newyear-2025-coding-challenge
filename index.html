@@ -50,6 +50,16 @@
 
             let nyIsFuture = false;
 
+            const quotes = [];
+            quotes.push("Today is the first day of the rest of your life!");
+            quotes.push("The expert in anything was once a beginner.");
+            quotes.push("The only way to do great work is to love what you do.");
+            quotes.push("The best way to predict the future is to create it.");
+            quotes.push("The only person you are destined to become is the person you decide to be.");
+            quotes.push("The best time to plant a tree was 20 years ago. The second best time is now.");
+            quotes.push("The harder you work for something, the greater you'll feel when you achieve it.");
+            quotes.push("Success consists of going from failure to failure without loss of enthusiasm.");
+
             document.querySelector(".distance").addEventListener("click", () => {
 
                 if (nyIsFuture) {
@@ -58,7 +68,7 @@
                     document.querySelector(".distance").textContent = "sinds";
                     nyIsFuture = false;
                 } else {
-                    document.getElementById("message").textContent = "Today is the first day of the rest of your life!";
+                    document.getElementById("message").textContent = quotes[Math.floor(Math.random() * quotes.length)];
                     newYear = new Date("2026-01-01T00:00:00");
                     document.querySelector(".distance").textContent = "tot";
                     nyIsFuture = true;

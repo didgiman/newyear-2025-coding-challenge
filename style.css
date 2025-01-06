@@ -661,10 +661,6 @@ h5{
   justify-content: center;
 }
 
-.border{
-  border-width: 1px;
-}
-
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
@@ -686,7 +682,7 @@ h5{
 .message {
   font-size: 32px;
   color: #ff5722;
-  animation: blink 1s infinite;
+  animation: blink 2s infinite;
 }
 
 @keyframes blink {
